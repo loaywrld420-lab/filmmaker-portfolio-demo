@@ -482,10 +482,58 @@ footer{
 .demo-photo.p6 { background:radial-gradient(circle at 35% 35%,rgba(180,180,180,.45),transparent 28%),linear-gradient(145deg,#080808,#303030,#050505); }
 .demo-form-note { color:#888; font-size:.72rem; }
 
+
+/* VOID BRANDING — additive styles only */
+.void-branding{
+    position:relative;
+    overflow:hidden;
+    margin:0 0 34px;
+    padding:clamp(24px,5vw,48px);
+    border:1px solid var(--border);
+    background:radial-gradient(ellipse at 90% 10%,rgba(255,0,51,.15),transparent 42%),linear-gradient(135deg,#0d0d0d,#070707 68%);
+}
+.void-brand-mark{
+    color:var(--text);
+    font-size:clamp(2.8rem,8vw,5.8rem);
+    font-weight:900;
+    letter-spacing:-.09em;
+    line-height:.95;
+}
+.void-brand-mark span{color:var(--accent)}
+.void-brand-category{
+    margin-top:15px;
+    color:var(--accent);
+    font-size:.75rem;
+    font-weight:bold;
+    letter-spacing:clamp(2px,.5vw,4px);
+}
+.void-brand-headline{
+    margin-top:28px;
+    max-width:800px;
+    color:var(--text);
+    font-size:clamp(1.5rem,4.2vw,3.2rem);
+    line-height:1.1;
+    letter-spacing:-.04em;
+}
+.void-brand-subline{
+    margin-top:12px;
+    color:#999;
+    font-size:clamp(.82rem,1.5vw,1rem);
+    letter-spacing:.02em;
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- VOID BRANDING — added without changing the existing portfolio demo -->
+<section class="void-branding" aria-label="VOID digital portfolio service">
+    <div class="void-brand-mark">VOID<span>.</span></div>
+    <p class="void-brand-category">DIGITAL PORTFOLIOS FOR CREATIVES</p>
+    <h2 class="void-brand-headline">Your Work Deserves a Better Stage.</h2>
+    <p class="void-brand-subline">A professional portfolio. A distinctive presence.</p>
+</section>
 
 <header>
     <div class="brand">
