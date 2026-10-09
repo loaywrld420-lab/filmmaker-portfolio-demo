@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FILMMAKER PORTFOLIO // DEMO TEMPLATE</title>
+
+<style>
+:root{
+    --bg:#050505;
+    --surface:#0d0d0d;
+    --border:#1f1f1f;
+    --text:#ececec;
+    --muted:#666;
+    --accent:#ff0033;
+    --accent-glow:rgba(255,0,51,.2);
+}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:"Courier New",Courier,monospace;
+}
+html{scroll-behavior:smooth}
+body{
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.4;
+    padding:20px;
+    max-width:1200px;
+    margin:0 auto;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.25) 50%);
+    background-size:100% 4px;
+    z-index:1000;
+    pointer-events:none;
+    opacity:.5;
+}
+header{
+    border-bottom:1px solid var(--border);
+    padding-bottom:25px;
+    margin-bottom:40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:15px;
+}
+.brand h1{
+    font-size:2.2rem;
+    letter-spacing:-1px;
+    text-transform:uppercase;
+    font-weight:900;
+}
+.brand h1 span{color:var(--accent)}
+.tag{
+    font-size:.8rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+.hero{margin-bottom:40px}
+.hero-title{
+    font-size:2.8rem;
+    line-height:1.1;
+    text-transform:uppercase;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+.hero-title mark{
+    background:none;
+    color:var(--accent);
+}
+.hero-bio{
+    color:#999;
+    max-width:750px;
+    font-size:.95rem;
+    margin-bottom:20px;
+}
+.skills-badges{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+.badge{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:6px 12px;
+    font-size:.75rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+.section-header{
+    font-size:.9rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:25px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.section-header::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--border);
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:25px;
+    margin-bottom:60px;
+}
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    overflow:hidden;
+    transition:all .2s ease-in-out;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.card:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 15px var(--accent-glow);
+}
+.video-container{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+    background:#000;
+    border-bottom:1px solid var(--border);
+}
+.video-container iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+.card-content{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:100%;
+    gap:15px;
+}
+.card-category{
+    font-size:.7rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+.card-title{
+    font-size:1.1rem;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    font-weight:bold;
+}
+.card-roles{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:12px;
+}
+.role-tag{
+    font-size:.7rem;
+    color:#fff;
+    background:#181818;
+    padding:3px 8px;
+    border-left:2px solid var(--accent);
+    text-transform:uppercase;
+}
+.card-credits{
+    font-size:.75rem;
+    color:#888;
+    margin-bottom:15px;
+    line-height:1.4;
+}
+.btn{
+    display:block;
+    padding:10px 16px;
+    background:var(--text);
+    color:var(--bg);
+    text-decoration:none;
+    font-weight:bold;
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    border:none;
+    cursor:pointer;
+    text-align:center;
+    transition:all .2s;
+    margin-top:auto;
+}
+.btn:hover{
+    background:var(--accent);
+    color:#fff;
+}
+
+/* VERTICAL / REELS */
+.vertical-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    max-width:900px;
+    margin:0 auto 60px;
+}
+.vertical-card .video-container{
+    padding-bottom:177.7778%;
+}
+.vertical-card .card-content{
+    padding:16px;
+}
+.vertical-card .card-title{
+    font-size:1rem;
+}
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:15px;
+    margin-bottom:60px;
+}
+.photo-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    overflow:hidden;
+    aspect-ratio:4/5;
+    position:relative;
+    transition:all .3s ease-in-out;
+    cursor:pointer;
+}
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:grayscale(20%) contrast(110%);
+    transition:transform .4s ease,filter .4s ease;
+}
+.photo-card:hover img{
+    filter:grayscale(0%) contrast(100%);
+    transform:scale(1.04);
+}
+.photo-card:hover{
+    border-color:var(--accent);
+    box-shadow:0 0 15px var(--accent-glow);
+}
+.photo-loading{
+    grid-column:1/-1;
+    padding:50px 20px;
+    text-align:center;
+    color:var(--muted);
+    border:1px solid var(--border);
+    font-size:.8rem;
+    letter-spacing:1px;
+}
+.photo-number{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    padding:4px 7px;
+    background:rgba(0,0,0,.75);
+    color:#fff;
+    font-size:.65rem;
+    z-index:2;
+    pointer-events:none;
+}
+.contact-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+    padding-top:20px;
+}
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+input,textarea{
+    background:var(--surface);
+    border:1px solid var(--border);
+    color:var(--text);
+    padding:14px;
+    font-size:.85rem;
+}
+input:focus,textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+}
+.social-box{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+.social-link{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    color:var(--text);
+    text-decoration:none;
+    font-size:.85rem;
+    transition:border-color .2s;
+}
+.social-link:hover{border-color:var(--text)}
+footer{
+    margin-top:80px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+    text-align:center;
+    font-size:.75rem;
+    color:var(--muted);
+}
+
+/* LIGHTBOX */
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+.lightbox.active{display:flex}
+.lightbox img{
+    max-width:92vw;
+    max-height:88vh;
+    object-fit:contain;
+    border:1px solid var(--border);
+    box-shadow:0 0 35px rgba(0,0,0,.8);
+}
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+    position:absolute;
+    background:rgba(13,13,13,.9);
+    border:1px solid var(--border);
+    color:#fff;
+    cursor:pointer;
+    width:44px;
+    height:44px;
+    font-size:22px;
+    z-index:2001;
+}
+.lightbox-close{
+    top:20px;
+    right:20px;
+    color:var(--accent);
+}
+.lightbox-prev{left:20px}
+.lightbox-next{right:20px}
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover{
+    background:var(--accent);
+    color:#fff;
+}
+.lightbox-counter{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#aaa;
+    font-size:.75rem;
+    letter-spacing:1px;
+    background:rgba(0,0,0,.7);
+    padding:7px 12px;
+}
+@media(max-width:700px){
+    body{padding:14px}
+    .brand h1{font-size:1.7rem}
+    .hero-title{font-size:2rem}
+    .grid{grid-template-columns:1fr}
+    .vertical-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+    .vertical-card .card-content{
+        padding:12px;
+    }
+    .vertical-card .card-title{
+        font-size:.8rem;
+    }
+    .vertical-card .btn{
+        padding:8px 5px;
+        font-size:.6rem;
+    }
+    .photo-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:8px;
+    }
+    .photo-card{aspect-ratio:3/4}
+    .lightbox{padding:15px}
+    .lightbox img{max-width:96vw;max-height:82vh}
+    .lightbox-prev{left:8px}
+    .lightbox-next{right:8px}
+    .lightbox-close{top:8px;right:8px}
+}
+
+/* ================= ADMIN PHOTO MANAGER ================= */
+.admin-tools {
+    margin: 0 0 60px;
+    border: 1px solid var(--border);
+    background: #080808;
+    padding: 20px;
+}
+.admin-tools summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-size: .8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    user-select: none;
+}
+.admin-panel { margin-top: 20px; }
+.admin-note { color:#777; font-size:.72rem; line-height:1.6; margin-bottom:15px; }
+.admin-grid { display:grid; grid-template-columns: 1fr auto; gap:10px; margin-bottom:15px; }
+.admin-input, .admin-file {
+    width:100%; background:#050505; color:#eee; border:1px solid #242424;
+    padding:11px 12px; font-family:'Courier New', monospace; font-size:.75rem;
+}
+.admin-file { padding:8px; }
+.admin-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.admin-status { margin-top:15px; min-height:20px; color:#999; font-size:.75rem; white-space:pre-wrap; }
+.admin-status.ok { color:#6cff8b; }
+.admin-status.error { color:#ff5577; }
+.admin-order-list { display:grid; gap:8px; margin:15px 0; }
+.admin-order-item {
+    display:flex; align-items:center; gap:12px; padding:9px 10px; background:#0d0d0d;
+    border:1px solid #202020; cursor:grab; user-select:none;
+}
+.admin-order-item.dragging { opacity:.45; border-color:var(--accent); }
+.admin-order-item img { width:52px; height:52px; object-fit:cover; border:1px solid #222; }
+.admin-order-name { font-size:.7rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.admin-order-number { color:var(--accent); font-size:.7rem; min-width:25px; }
+.admin-delete { margin-left:auto; flex:0 0 auto; padding:7px 10px; background:#100308; color:#ff5577; border:1px solid #4a1825; font-family:'Courier New',monospace; font-size:.68rem; cursor:pointer; }
+.admin-delete:hover { background:#ff0033; color:#fff; border-color:#ff0033; }
+.photo-card { cursor:pointer; }
+.photo-card.dragging { opacity:.45; }
+.photo-card.drag-over { outline:2px solid var(--accent); outline-offset:-2px; }
+@media (max-width:600px){ .admin-grid{grid-template-columns:1fr;} }
+
+
+/* DEMO PLACEHOLDERS — synthetic visuals only; no client or portfolio assets */
+.demo-media { display:flex; align-items:stretch; }
+.demo-art {
+    width:100%; min-height:100%; aspect-ratio:16/9; display:flex; flex-direction:column;
+    justify-content:space-between; padding:22px; background:
+    radial-gradient(circle at 70% 30%, rgba(255,0,51,.45), transparent 35%),
+    linear-gradient(135deg,#090909,#26000b 55%,#050505);
+    border:1px solid #211016; color:#fff;
+}
+.demo-art.alt { background:radial-gradient(circle at 25% 35%,rgba(0,180,180,.35),transparent 36%),linear-gradient(135deg,#050b10,#102128,#050505); }
+.demo-art.third { background:radial-gradient(circle at 65% 40%,rgba(140,70,255,.45),transparent 35%),linear-gradient(135deg,#08050d,#211139,#050505); }
+.demo-art span { color:#aaa; font-size:.7rem; letter-spacing:2px; }
+.demo-art strong { color:#fff; font-size:clamp(1.3rem,3vw,2.6rem); letter-spacing:1px; }
+.vertical-art { aspect-ratio:9/16; }
+.demo-photo { display:flex; align-items:flex-end; justify-content:flex-start; padding:14px; color:#fff; text-align:left;
+    background:radial-gradient(circle at 65% 25%,rgba(255,0,51,.7),transparent 28%),linear-gradient(145deg,#080808,#2b0010,#050505);
+    font-family:"Courier New",monospace; }
+.demo-photo span { background:rgba(0,0,0,.7); padding:7px 9px; font-size:.7rem; letter-spacing:1px; }
+.demo-photo.p2 { background:radial-gradient(circle at 30% 35%,rgba(0,180,180,.65),transparent 28%),linear-gradient(145deg,#050b10,#143039,#050505); }
+.demo-photo.p3 { background:radial-gradient(circle at 70% 40%,rgba(255,138,0,.65),transparent 28%),linear-gradient(145deg,#110900,#3b2100,#050505); }
+.demo-photo.p4 { background:radial-gradient(circle at 45% 28%,rgba(138,77,255,.7),transparent 28%),linear-gradient(145deg,#09050e,#29133d,#050505); }
+.demo-photo.p5 { background:radial-gradient(circle at 60% 35%,rgba(85,187,119,.55),transparent 28%),linear-gradient(145deg,#050c08,#153021,#050505); }
+.demo-photo.p6 { background:radial-gradient(circle at 35% 35%,rgba(180,180,180,.45),transparent 28%),linear-gradient(145deg,#080808,#303030,#050505); }
+.demo-form-note { color:#888; font-size:.72rem; }
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <h1>YOUR NAME<span>.</span></h1>
+        <p class="tag">Director // Editor // Cinematographer</p>
+    </div>
+    <div class="tag">[ YOUR CITY // PORTFOLIO ]</div>
+</header>
+
+<section class="hero">
+    <h2 class="hero-title">YOUR VISION.<br><mark>YOUR STORY.</mark></h2>
+    <p class="hero-bio">
+        A filmmaker and visual storyteller focused on cinematic projects, creative campaigns,
+        and compelling visual experiences. Replace this paragraph with your own bio.
+    </p>
+    <div class="skills-badges">
+        <span class="badge">Director</span>
+        <span class="badge">Assistant Director</span>
+        <span class="badge">1st Art Director</span>
+        <span class="badge">3D & VFX</span>
+        <span class="badge">Video Editing</span>
+        <span class="badge">Photography</span>
+    </div>
+</section>
+
+<!-- SELECTED WORKS -->
+<div class="section-header">// SELECTED WORKS</div>
+
+<div class="grid">
+    <div class="card">
+        <div class="video-container demo-media"><div class="demo-art"><span>DEMO PROJECT 01</span><strong>SHORT FILM</strong></div></div>
+        <div class="card-content"><div>
+            <div class="card-category">DEMO CONTENT // SHORT FILM</div>
+            <div class="card-title">THE LAST FRAME</div>
+            <div class="card-roles"><span class="role-tag">Director</span><span class="role-tag">Editor</span></div>
+            <p class="card-credits">Placeholder project. Replace with an authorized work and accurate credits.</p>
+        </div><a href="#contact" class="btn">PROJECT INQUIRY</a></div>
+    </div>
+    <div class="card">
+        <div class="video-container demo-media"><div class="demo-art alt"><span>DEMO PROJECT 02</span><strong>COMMERCIAL</strong></div></div>
+        <div class="card-content"><div>
+            <div class="card-category">DEMO CONTENT // COMMERCIAL</div>
+            <div class="card-title">FORM IN MOTION</div>
+            <div class="card-roles"><span class="role-tag">Cinematography</span><span class="role-tag">Post-Production</span></div>
+            <p class="card-credits">Placeholder project. Replace with an authorized work and accurate credits.</p>
+        </div><a href="#contact" class="btn">PROJECT INQUIRY</a></div>
+    </div>
+    <div class="card">
+        <div class="video-container demo-media"><div class="demo-art third"><span>DEMO PROJECT 03</span><strong>3D / VFX</strong></div></div>
+        <div class="card-content"><div>
+            <div class="card-category">DEMO CONTENT // 3D & VFX</div>
+            <div class="card-title">OBJECT STUDY</div>
+            <div class="card-roles"><span class="role-tag">3D Artist</span><span class="role-tag">VFX</span></div>
+            <p class="card-credits">Placeholder project. Replace with an authorized work and accurate credits.</p>
+        </div><a href="#contact" class="btn">PROJECT INQUIRY</a></div>
+    </div>
+</div>
+
+<!-- VERTICAL / REELS -->
+<div class="section-header">// VERTICAL / REELS</div>
+
+<div class="vertical-grid">
+    <div class="card vertical-card">
+        <div class="video-container demo-media"><div class="demo-art vertical-art"><span>VERTICAL DEMO 01</span><strong>REEL</strong></div></div>
+        <div class="card-content"><div><div class="card-category">DEMO CONTENT // VERTICAL</div><div class="card-title">REEL PLACEHOLDER 01</div></div><a href="#contact" class="btn">ASK ABOUT THIS FORMAT</a></div>
+    </div>
+    <div class="card vertical-card">
+        <div class="video-container demo-media"><div class="demo-art vertical-art alt"><span>VERTICAL DEMO 02</span><strong>REEL</strong></div></div>
+        <div class="card-content"><div><div class="card-category">DEMO CONTENT // VERTICAL</div><div class="card-title">REEL PLACEHOLDER 02</div></div><a href="#contact" class="btn">ASK ABOUT THIS FORMAT</a></div>
+    </div>
+</div>
+
+<!-- PHOTOGRAPHY -->
+<div class="section-header">// PHOTOGRAPHY</div>
+
+<div id="photo-gallery" class="photo-grid" aria-label="Demo photography gallery">
+    <button class="photo-card demo-photo" type="button" data-demo-photo="01"><span>DEMO PHOTO 01</span></button>
+    <button class="photo-card demo-photo p2" type="button" data-demo-photo="02"><span>DEMO PHOTO 02</span></button>
+    <button class="photo-card demo-photo p3" type="button" data-demo-photo="03"><span>DEMO PHOTO 03</span></button>
+    <button class="photo-card demo-photo p4" type="button" data-demo-photo="04"><span>DEMO PHOTO 04</span></button>
+    <button class="photo-card demo-photo p5" type="button" data-demo-photo="05"><span>DEMO PHOTO 05</span></button>
+    <button class="photo-card demo-photo p6" type="button" data-demo-photo="06"><span>DEMO PHOTO 06</span></button>
+</div>
+
+<!-- CONTACT -->
+<div class="section-header">// DIRECT CONTACT & INQUIRIES</div>
+
+<div class="contact-container" id="contact">
+    <form id="demoContactForm">
+        <input type="text" name="name" placeholder="YOUR NAME / BRAND" required>
+        <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" required>
+        <textarea name="message" rows="5" placeholder="PROJECT BRIEF / INQUIRY..." required></textarea>
+        <button type="submit" class="btn">TEST DEMO FORM</button>
+        <p class="demo-form-note">Demo mode: this form does not send or store messages.</p>
+    </form>
+    <div class="social-box">
+        <div class="social-link"><span>EMAIL</span><span>[ ADD YOUR EMAIL ]</span></div>
+        <div class="social-link"><span>WHATSAPP</span><span>[ ADD YOUR LINK ]</span></div>
+        <div class="social-link"><span>SHOWREEL</span><span>[ ADD YOUR URL ]</span></div>
+    </div>
+</div>
+
+<footer>
+    <p>© YOUR NAME. ALL RIGHTS RESERVED. // PORTFOLIO TEMPLATE DEMO</p>
+</footer>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+    <img id="lightboxImage" src="" alt="Photography">
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next">›</button>
+    <div id="lightboxCounter" class="lightbox-counter"></div>
+</div>
+
+<script>
+/* Portfolio template demo: no GitHub API, repository binding, or access tokens. */
+const demoPhotos = [...document.querySelectorAll("[data-demo-photo]")];
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCounter = document.getElementById("lightboxCounter");
+let currentPhoto = 0;
+
+function makeDemoImage(index) {
+    const palettes = [
+        ["#17000a", "#ff0033"], ["#071018", "#00a6a6"],
+        ["#1a1000", "#ff8a00"], ["#10071c", "#8a4dff"],
+        ["#06140d", "#55bb77"], ["#161616", "#a0a0a0"]
+    ];
+    const [a,b] = palettes[index % palettes.length];
+    const label = String(index + 1).padStart(2, "0");
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs>
+      <rect width="900" height="1100" fill="url(#g)"/>
+      <circle cx="${180 + index*70}" cy="350" r="220" fill="#fff" opacity=".07"/>
+      <path d="M0 820 L900 450 L900 1100 L0 1100Z" fill="#000" opacity=".45"/>
+      <path d="M0 0 H900 V12 H0Z M0 1088 H900 V1100 H0Z" fill="#fff" opacity=".35"/>
+      <text x="55" y="940" fill="#fff" font-family="Courier New,monospace" font-size="38" letter-spacing="5">DEMO PHOTOGRAPHY</text>
+      <text x="55" y="1010" fill="#fff" font-family="Courier New,monospace" font-size="76" font-weight="bold">FRAME ${label}</text>
+    </svg>`;
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+const demoImageUrls = demoPhotos.map((_, i) => makeDemoImage(i));
+
+function openLightbox(index) {
+    currentPhoto = index;
+    updateLightbox();
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
+function closeLightbox() {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+}
+function updateLightbox() {
+    if (!demoImageUrls.length) return;
+    lightboxImage.src = demoImageUrls[currentPhoto];
+    lightboxImage.alt = "Demo photography frame " + (currentPhoto + 1);
+    lightboxCounter.textContent = String(currentPhoto + 1).padStart(2, "0") + " / " + String(demoImageUrls.length).padStart(2, "0");
+}
+function nextPhoto() { if (demoImageUrls.length) { currentPhoto = (currentPhoto + 1) % demoImageUrls.length; updateLightbox(); } }
+function previousPhoto() { if (demoImageUrls.length) { currentPhoto = (currentPhoto - 1 + demoImageUrls.length) % demoImageUrls.length; updateLightbox(); } }
+
+demoPhotos.forEach((card, index) => {
+    card.addEventListener("click", () => openLightbox(index));
+});
+document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+document.getElementById("lightboxNext").addEventListener("click", nextPhoto);
+document.getElementById("lightboxPrev").addEventListener("click", previousPhoto);
+lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener("keydown", e => {
+    if (!lightbox.classList.contains("active")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextPhoto();
+    if (e.key === "ArrowLeft") previousPhoto();
+});
+document.getElementById("demoContactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    alert("This is a demo form. Add the client's own form service before launch.");
+});
+</script>
+
+</body>
+</html>
